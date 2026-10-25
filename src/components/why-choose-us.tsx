@@ -23,35 +23,51 @@ const features = [
 
 export function WhyChooseUs() {
   return (
-    <section className="bg-teal-50 px-4 py-16 md:px-8">
+    <section className="bg-teal-50/70 px-4 py-16 md:px-8 md:py-20">
       <div className="mx-auto max-w-6xl">
-        <h2 className="text-center text-3xl font-bold text-zinc-900 md:text-4xl">
-          Why Choose Wanderlust
-        </h2>
-        <p className="mt-2 text-center text-xs text-teal-700/80 md:text-sm">
-          Your trusted partner for exceptional travel experiences
-        </p>
+        {/* Section heading */}
+        <div className="text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-600">
+            Why Travel With Us
+          </p>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 md:text-4xl">
+            Why Choose Wanderlust?
+          </h2>
+
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-zinc-500 md:text-base">
+            Your trusted partner for safe, comfortable, and unforgettable
+            travel experiences.
+          </p>
+        </div>
+
+        {/* Feature cards */}
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
-            <div
+            <article
               key={feature.title}
-              className="border border-teal-100 bg-white/80 p-8 text-left"
+              className="group rounded-2xl border border-teal-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-teal-300 hover:shadow-lg md:p-8"
             >
-              <Image
-                src={feature.icon}
-                alt=""
-                width={48}
-                height={48}
-                className="size-8 w-auto"
-              />
-              <h3 className="mt-4 text-lg font-bold text-zinc-900">
+              <div className="flex size-14 items-center justify-center rounded-xl bg-teal-50 transition-colors duration-300 group-hover:bg-teal-100">
+                <Image
+                  src={feature.icon}
+                  alt=""
+                  width={36}
+                  height={36}
+                  className="size-9 object-contain"
+                />
+              </div>
+
+              <h3 className="mt-6 text-lg font-bold text-zinc-900">
                 {feature.title}
               </h3>
-              <p className="mt-2 text-xs leading-relaxed text-zinc-500 md:text-sm">
+
+              <p className="mt-3 text-sm leading-7 text-zinc-500">
                 {feature.description}
               </p>
-            </div>
+
+              <div className="mt-6 h-1 w-10 rounded-full bg-teal-500 transition-all duration-300 group-hover:w-16" />
+            </article>
           ))}
         </div>
       </div>
