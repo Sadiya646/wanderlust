@@ -2,15 +2,16 @@ import Image from "next/image";
 import { User } from "lucide-react";
 
 const navLinks = [
-  { label: "Home", href: "#", active: true },
-  { label: "Destinations", href: "#", active: false },
-  { label: "My Bookings", href: "#", active: false },
-  { label: "Admin", href: "#", active: false },
+  { label: "Home", href: "/", active: true },
+  { label: "Destinations", href: "/destinations", active: false },
+  { label: "Add Destination", href: "/add-destination", active: false },
+  { label: "My Bookings", href: "/my-bookings", active: false },
+  
 ];
 
 const accountLinks = [
-  { label: "Login", href: "#" },
-  { label: "Sign Up", href: "#" },
+  { label: "Login", href: "/login" },
+  { label: "Sign Up", href: "/sign-up" },
 ];
 
 export function Navbar() {
