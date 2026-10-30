@@ -1,4 +1,6 @@
 
+import Link from "next/link";
+
 type Destination = {
   _id: string;
   name: string;
@@ -31,19 +33,16 @@ const AllDestinationpage = async () => {
 
       {/* Filters */}
       <div className="mb-4 grid grid-cols-1 overflow-hidden rounded-lg border border-gray-300 bg-white shadow-sm sm:grid-cols-3">
-        {/* Category */}
         <button className="flex h-14 items-center justify-between border-b border-gray-300 px-5 text-left text-sm text-gray-600 transition hover:bg-gray-50 sm:border-b-0 sm:border-r">
           <span>CATEGORY</span>
           <span className="text-base text-gray-400">⌄</span>
         </button>
 
-        {/* Price Range */}
         <button className="flex h-14 items-center justify-between border-b border-gray-300 px-5 text-left text-sm text-gray-600 transition hover:bg-gray-50 sm:border-b-0 sm:border-r">
           <span>PRICE RANGE</span>
           <span className="text-base text-gray-400">⌄</span>
         </button>
 
-        {/* Sort By */}
         <button className="flex h-14 items-center justify-between px-5 text-left text-sm text-gray-600 transition hover:bg-gray-50">
           <span>SORT BY</span>
           <span className="text-base text-gray-400">⌄</span>
@@ -108,10 +107,13 @@ const AllDestinationpage = async () => {
               </div>
 
               {/* Book Now */}
-              <button className="mt-5 flex items-center gap-2 text-xs font-semibold tracking-wide text-sky-600 transition-all duration-200 hover:gap-3 hover:text-sky-800">
+              <Link
+                href={`/destinations/${destination._id}`}
+                className="mt-5 inline-flex items-center gap-2 text-xs font-semibold tracking-wide text-sky-600 transition-all duration-200 hover:gap-3 hover:text-sky-800"
+              >
                 BOOK NOW
                 <span className="text-base">↗</span>
-              </button>
+              </Link>
             </div>
           </div>
         ))}
