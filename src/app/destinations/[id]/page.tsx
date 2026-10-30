@@ -16,6 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import EditDestinationDialog from "@/components/EditDestinationDialog";
+import DeleteDestinationButton from "@/components/DeleteDestinationButton";
 
 type Destination = {
   _id: string;
@@ -63,6 +64,38 @@ async function DestinationDetails({
 
   const data: Destination = await res.json();
 
+
+const handleDelete = async () => {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this destination?"
+  );
+
+  if (!confirmDelete) return;
+
+  try {
+    const res = await fetch(
+      `http://localhost:8000/destination/${data._id}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error("Failed to delete destination");
+    }
+
+    alert("Destination deleted successfully!");
+
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
+    window.location.href = "/destinations";
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong!");
+  }
+};
+
+
+
   return (
     <>
       {/* Navigation & Actions Header */}
@@ -82,14 +115,8 @@ async function DestinationDetails({
             
       <EditDestinationDialog destination={data} />
 
-          <Button
-            variant="outline"
-            size="sm"
-            className="h-10 gap-2 rounded-xl border-slate-200 px-5 text-sm font-semibold text-slate-700 shadow-sm transition-all hover:border-red-200 hover:bg-red-50 hover:text-red-600"
-          >
-            <Trash2 className="size-4 text-red-500" />
-            Cancel
-          </Button>
+  <DeleteDestinationButton id={data._id} />
+  
         </div>
       </div>
 
